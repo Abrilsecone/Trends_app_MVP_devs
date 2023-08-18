@@ -23,19 +23,32 @@
 .PhotoContainer {
     height: 6.5rem;
     width: 6.5rem;
-    box-shadow: 0.3px 0.3px 1px #8f9395;
 }
 .IconsContainer {
   display: flex;
   gap: 10%;
   justify-content: space-between;
   align-items: center;
+  margin-left: 50rem;
 }
 
 .PhotoContainer img {
     height: 100%;
     width: 100%;
+    border-radius: 121213px;
 }
+
+.IconButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .Icon {
+    font-size: 2rem;
+
+  }
 
 .AttributesContainer {
     margin-left: .6rem;
@@ -95,6 +108,64 @@
     line-height: 1.8rem;
 }
 
+@media (max-width: 768px) {
+    .MainContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .PhotoContainer{
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+
+    .IconsContainer {
+        display: flex;
+        gap: 10%;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 5rem;
+        margin: 1rem;
+        flex-wrap: wrap;
+      }
+
+    .PhotoContainer {
+        margin-right: 1rem;
+        margin-left: 1rem;
+
+    }
+
+    .AttributesContainer {
+        margin-left: 0;
+    }
+
+    .LastContainer {
+        margin-left: 0;
+        text-align: center; 
+    }
+    .PhotoContainer img {
+    height: 100%;
+    width: 100%;
+    border-radius: 121213px;
+    }
+    .IconsContainer {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .IconButton {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+      }
+      
+      .Icon {
+        font-size: 2rem;
+      }
+}
+
+
 :global(.dark-mode) .AttributesContainer h1 {
     color:#ddaf8f
 }
@@ -102,4 +173,3 @@
 :global(.dark-mode) .AttributesContainer h2, :global(.dark-mode) .AttributesContainer h3  {
     color:#ddaf8f
 }
-

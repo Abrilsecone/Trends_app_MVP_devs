@@ -8,7 +8,14 @@ import { getUserInfo, selectUserProfile } from "../../Redux/UsersSlice";
 import NavBar from "../../components/NavBar/NavBar";
 import NavBarBase from "../../components/NavBarBase/NavBarBase";
 
-
+function traducirTipoPerfil(type) {
+    switch (type) {
+      case "professional":
+        return "Profesional";
+      case "student":
+        return "Estudiante";
+    }
+}
 const Profile = () => {
     const dispatch = useDispatch();
     const userData = useSelector(selectUserProfile);
@@ -88,7 +95,8 @@ const Profile = () => {
 
 
 
-                        <h1>userData.type</h1>
+                        <h1>{traducirTipoPerfil(userData.type)}</h1>
+
 
 
 

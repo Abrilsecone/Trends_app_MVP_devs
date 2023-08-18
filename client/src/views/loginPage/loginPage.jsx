@@ -26,6 +26,10 @@ export default function LoginPage() {
     }));
   };
 
+  const handleCreateAccountClick = () => {
+    navigate("/Trends_app_MVP/register");
+  };
+
 
       console.log(inputs)
     //?FUNCION PARA OBTENER UNA CADENA DE CONSULTA UNICA
@@ -90,20 +94,20 @@ export default function LoginPage() {
 
         <div className={style.RightContainer}>
           <form onSubmit={handleSubmit}>
-            <h2>Log In</h2>
+            <h2>Inicia Sesion</h2>
             <div className={style.Input}>
               <input
                 name="user"
                 onChange={handleInputs}
                 type="text"
-                placeholder="Email or username"
+                placeholder="Email o Nombre de usuario"
               />
               <p
                 className={
                   validateLogin === false ? `${style.Error}` : style.NoError
                 }
               >
-                wrong email or password
+                Correo o contraseña equivocada
               </p>
             </div>
             <div className={style.Input}>
@@ -111,30 +115,31 @@ export default function LoginPage() {
                 name="password"
                 onChange={handleInputs}
                 type="password"
-                placeholder="Password"
+                placeholder="Contraseña"
               />
               <p
                 className={
                   validateLogin === false ? `${style.Error}` : style.NoError
                 }
               >
-                wrong email or password
+                Correo o contraseña equivocada
               </p>
             </div>
             <div className={style.Options}>
               <div>
                 <input id="remember" type="checkbox" />
-                <label htmlFor="remember"> Remember me</label>
+                <label htmlFor="remember">Recordame</label>
               </div>
-              <div>forgot Password</div>
             </div>
             <button disabled={!(inputs.user && inputs.password)} type="submit">
-              Sign In
+              Iniciar Sesion
             </button>
             <hr />
             <div className={style.Account}>
-              <span>Doesn&apos;t have an account?</span>{" "}
-              <span className={style.Bold}>Create Account</span>
+              <span>Olvidaste la contraseña?</span>{" "}
+              <span className={style.Bold} onClick={handleCreateAccountClick}>
+                Crear Cuenta
+              </span>
             </div>
           </form>
         </div>

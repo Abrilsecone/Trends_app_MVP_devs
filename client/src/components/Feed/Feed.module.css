@@ -1,24 +1,14 @@
 .BGContainer {
     position: relative;
-
-  
-
+    gap: 0.5rem;
+    width: 100vw;
+    display: flex;    
+}
 .Container {
   margin-left: 4.3rem;
   width: 100%;
   border-radius: .3rem;
   padding: 0rem 1.1rem 0rem 0rem;
-
-    justify-content: center;
-    gap: 1rem;
-    width: 100vw;
-    display: flex;    
-    padding-top: 2rem;
-}
-.Container {
-  width: 80%;
-  border-radius: .3rem;
-
 }
 
 .BGContainer header {
@@ -31,8 +21,9 @@
 }
 
 .BGContainer header h1 {
-    color: rgb(58, 58, 58);
+    color: rgb(255, 255, 255);
     margin: 0;
+    font-family: "Montserrat-Medium";
 }
 
 .Feed {
@@ -83,6 +74,7 @@
     width: 100%;
 }
 
+
 :global(.dark-mode) .BGContainer {
     background-color: #242424;
 }
@@ -92,8 +84,36 @@
 :global(.dark-mode) .Feed {
     background-color: #383636;
 }
+
+:global(.dark-mode) header h1 {
+    color:   #383636;
+    margin: 0;
+    font-family: "Montserrat-Medium";
+}
 @media screen and (max-width: 650px ) {
     .BGContainer {
-        width: 100vw
+        width: 100vw;
+        gap: 0;
+    }
+    .Feed {
+    padding-top: 1rem;
+    }
+    .BGContainer header {
+        background-color: #9AC2EF;
+        font-family: "Rubik-Regular";
+        height: 5rem;
+    }
+
+    .Container {
+        padding: 0;
+        margin-left: 0;
+        margin-top: 4.3rem;
+        margin-right: 0;
+    }
+
+    .ConfigContainer{
+        margin: 0;
+        font-size: 0.3rem;
+
     }
 }

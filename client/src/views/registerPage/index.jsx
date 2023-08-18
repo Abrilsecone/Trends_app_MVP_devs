@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProfessionalRegisterForm, StudentRegisterForm, CompanyRegisterForm } from "../../components";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import style from "./RegisterPage.module.css"; 
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -12,30 +12,24 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="main-container">
-      <h2>First of all... How do you want to register?</h2>
+    <main className={style["main-container"]}> 
+      <h2 style={{ margin: "1rem"}}>¿Cómo quieres registrarte?</h2>
       {registerForm === "" && (
-        <section className="button-section">
-          <button className="register-button" onClick={() => handleRegister("student")}>
-            Student
-          </button>
-          <button className="register-button" onClick={() => handleRegister("professional")}>
-            Professional
-          </button>
-          <button className="register-button" onClick={() => handleRegister("company")}>
-            Company
-          </button>
+        <section className={style["button-section"]}> 
+          <Link to="/Trends_app_MVP/studentRegister">
+            Estudiante
+          </Link>
+          <Link to="/Trends_app_MVP/professionalRegister">
+            Profesional
+          </Link>
+          <Link to="/Trends_app_MVP/companyRegister">
+            Compañia
+          </Link>
         </section>
       )}
-      {registerForm === "student" && <StudentRegisterForm />}
-      {registerForm === "professional" && <ProfessionalRegisterForm />}
-      {registerForm === "company" && (
-        <div>
-           <img src="/images/company_image.png" alt="Company" />
-        </div>
-      )}
-      <footer className="footer-container">
-        <button className="back-button" onClick={() => navigate("/Trends_app_MVP/")}>
+      
+      <footer className={style["footer-container"]}>
+        <button className={style["back-button"]} onClick={() => navigate("/Trends_app_MVP")}>Inicio
           {registerForm === "company" && <CompanyRegisterForm />}
         </button>
       </footer>

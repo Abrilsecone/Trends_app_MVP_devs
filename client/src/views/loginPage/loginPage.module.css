@@ -28,21 +28,19 @@
 }
 
 .Options > div {
-    font-style: italic;
     font-family: "Rubik-Regular" ;
     display: flex;
     align-items: center;
 }
 
 .Options > div input {
-    width: 1.5rem;
+    width: 1rem;
     margin: 0;
     margin-right: .5rem;
 }
 
 .LeftContainer {
     width: 50%;
-    padding: 0 1rem;
 }
 
 .LeftContainer > div {
@@ -54,7 +52,7 @@
     text-align: left;
     margin-bottom: 1.2rem;
     padding-left: 1rem;
-    color: black;
+    color: #9ac2ef;
 }
 .LeftContainer h3 {
     color: #4B5965;
@@ -66,29 +64,25 @@
 
 .LeftContainer img {
     display: block;
-    margin: 0 auto;
     height: 15rem;
 }
 
 .RightContainer {
     width: 50%;
     padding: 0 1rem;
-    padding-top: 2rem;
 }
 
 .RightContainer h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-family: "Rubik-Medium";
     margin-bottom: 1rem;
-    font-style: italic;
-    color: #4D4D4D;
+    color: #9ac2ef;
     text-align: center;
 }
 
 .RightContainer input {
     font-size: 1rem;
     font-family: "Rubik-Light";
-    font-style: italic;
     color: #4D4D4D;
     padding-left: 1rem;
     font-weight: 100;
@@ -107,7 +101,7 @@
 }
 
 .RightContainer button {
-    background-color: #56CCF2;
+    background-color: #9ac2ef;
     border: 0;
     font-size: 1.1rem;
     cursor: pointer;
@@ -120,7 +114,7 @@
 }
 
 .RightContainer button:disabled {
-    background-color: #4B5965;
+    background-color: #c0cad6;
 }
 .RightContainer hr {
     border: #c7c7c7 solid 0.1px;
@@ -188,19 +182,32 @@
     background-color: rgba(236, 189, 158, 0.348) ;
 }
 
+:global(.dark-mode) .BGContainer {
+    background-color: #242424;
+}
 
 
 @media screen and (max-width: 700px ) {
-    :global(.dark-mode) .Card {
-        background-color: transparent;
+    .BGContainer {
+        margin: auto;
+        padding-top: 1rem;
+        display: block;
     }
     .Card {
         display: flex;
         flex-direction: column;
-        width: 90vw;
+        width: 85vw;
         justify-content: center;
-    }
+        padding: 1.5rem;
+        padding-left: 0.7rem;
 
+        
+    }
+    .Options > div input {
+        width: 1rem;
+        margin: 0;
+        margin-right: .5rem;
+    }
 
     .LeftContainer , .RightContainer {
         margin: 0 auto;
@@ -208,11 +215,15 @@
         padding: 0;
     }
 
+    .RightContainer {
+        border-top: 1px solid #a2a2a2; 
+    }
+
     .LeftContainer > div {
         border-radius: .4rem;
         margin: 0 auto;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         padding: 0 2%;
+        padding-bottom: 1rem
 
     }
 
@@ -236,7 +247,6 @@
         margin: 0 auto;
         margin-top: 1rem;
         border-radius: .4rem;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         padding: 0 2%;
         padding-bottom: 1rem;
 
@@ -255,5 +265,5 @@
         width: fit-content;
         margin: 0 auto;
     }
-
+   
 }

@@ -15,7 +15,7 @@ const initialState = {
 
 export const postMessage = createAsyncThunk("chat/postMessage", async ({content, receiver_id, sender_id}) =>{
   try {
-    const { data } = await axios.post(`${VITE_URL}/api/v1/chatroom/message`,
+    const { data } = await axios.post(`${VITE_URL}/chatroom/message`,
       {content, receiver_id, sender_id}, {withCredentials:"include"})
     return data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const postMessage = createAsyncThunk("chat/postMessage", async ({content,
 
 export const getMessages = createAsyncThunk("chat/getMessages", async (chatId) => {
   try {
-    const { data } = await axios.get(`${VITE_URL}/api/v1/chatroom/chat/${chatId}/messages`,
+    const { data } = await axios.get(`${VITE_URL}/chatroom/chat/${chatId}/messages`,
       {withCredentials:"include"})
     return data
   } catch (error) {
@@ -35,7 +35,7 @@ export const getMessages = createAsyncThunk("chat/getMessages", async (chatId) =
 
 export const getMessagesByChat = createAsyncThunk("chat/getMessagesByChat", async(id) => {
   try {
-    const {data} = await axios.get(`${VITE_URL}/api/v1/chatroom/chat/${id}/messages`,
+    const {data} = await axios.get(`${VITE_URL}/chatroom/chat/${id}/messages`,
     {withCredentials:"include"})
     data.messages.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
     return data;
@@ -47,8 +47,8 @@ export const getMessagesByChat = createAsyncThunk("chat/getMessagesByChat", asyn
 const deleteMessage = createAsyncThunk("chat/deleteMessage", async({message_id, isGroup, conversation_id}) =>{
   try {
     const response = isGroup ?
-      await (axios.put(`${VITE_URL}/api/v1/chatroom/groups/${conversation_id}/message/${message_id}`, {messageStatus:"deleted"}, { withCredentials:"include"})).data :
-      await (axios.put(`${VITE_URL}/api/v1/chatroom/chat/${conversation_id}/message/${message_id}`, {messageStatus:"deleted"}, { withCredentials:"include"})).data
+      await (axios.put(`${VITE_URL}/chatroom/groups/${conversation_id}/message/${message_id}`, {messageStatus:"deleted"}, { withCredentials:"include"})).data :
+      await (axios.put(`${VITE_URL}/chatroom/chat/${conversation_id}/message/${message_id}`, {messageStatus:"deleted"}, { withCredentials:"include"})).data
     return response;
   } catch (error) {
     console.log(error)
@@ -57,7 +57,7 @@ const deleteMessage = createAsyncThunk("chat/deleteMessage", async({message_id, 
 
 const setListChats = createAsyncThunk("chat/setListChats", async ({ user_id, query_name }) => {
   try {
-    const promise = (await axios.get(`${VITE_URL}/api/v1/chatroom/conversations/${user_id}?query_name=${query_name}`, { withCredentials:"include"})).data
+    const promise = (await axios.get(`${VITE_URL}/chatroom/conversations/${user_id}?query_name=${query_name}`, { withCredentials:"include"})).data
     return promise;
   } catch (error) {
     return error.response.data.error;
@@ -66,7 +66,7 @@ const setListChats = createAsyncThunk("chat/setListChats", async ({ user_id, que
 
 const createNewGroup = createAsyncThunk("chat/createNewGroup", async({name}) => {
   try {
-    const response = (await axios.post(`${VITE_URL}/api/v1/chatroom/groups` , {name}, { withCredentials:"include"})).data
+    const response = (await axios.post(`${VITE_URL}/chatroom/groups` , {name}, { withCredentials:"include"})).data
     return response;
   } catch (error) {
     console.log(error)
@@ -75,7 +75,7 @@ const createNewGroup = createAsyncThunk("chat/createNewGroup", async({name}) => 
 
 const getGroupList = createAsyncThunk("chat/getGroupList", async() => {
   try {
-    const response = (await axios.get(`${VITE_URL}/api/v1/chatroom/groups?list=true`, { withCredentials:"include"})).data
+    const response = (await axios.get(`${VITE_URL}/chatroom/groups?list=true`, { withCredentials:"include"})).data
     return response;
   } catch (error) {
     throw new Error(error);
@@ -84,7 +84,7 @@ const getGroupList = createAsyncThunk("chat/getGroupList", async() => {
 
 const createGroupMember = createAsyncThunk("chat/createGroupMember", async({user_id, group_id}) => {
   try {
-    const response = (await axios.post(`${VITE_URL}/api/v1/chatroom/groups/${group_id}/users`, {userId: user_id, role: "member"}, {withCredentials: "include"})).data
+    const response = (await axios.post(`${VITE_URL}/chatroom/groups/${group_id}/users`, {userId: user_id, role: "member"}, {withCredentials: "include"})).data
     return response;
   } catch (error) {
     throw new Error(error);
@@ -93,7 +93,7 @@ const createGroupMember = createAsyncThunk("chat/createGroupMember", async({user
 
 // const setListMessages = createAsyncThunk("chat/setListMessages", async(id) =>{
 //   try {
-//     const {data} = await axios.get(`${VITE_URL}/api/v1/chatroom/chat/${id}/messages`, { withCredentials:"include"})
+//     const {data} = await axios.get(`${VITE_URL}/chatroom/chat/${id}/messages`, { withCredentials:"include"})
 //     data.messages.reverse();
 //     console.log("DATA: ", data)
 //     return data;

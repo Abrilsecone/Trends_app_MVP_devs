@@ -6,10 +6,19 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const {VITE_URL} = import.meta.env;
 
+function traducirTipoPerfil(type) {
+  switch (type) {
+    case "professional":
+      return "Profesional";
+    case "student":
+      return "Estudiante";
+  }
+}
+
 const RegisterFormBase = ({type})  => {
     const [validateLogin, setValidateLogin] = useState(null);
     const navigate = useNavigate();
-    const URL = `${VITE_URL}/api/v1/auth/register`;
+    const URL = `${VITE_URL}/auth/register`;
     
 
   const [inputs, setInputs] = useState({
@@ -99,7 +108,7 @@ const handleInterestsChange = (event) => {
           const result = fetch.data;
           console.log(result);
           setValidateLogin(true);
-          navigate("/Trends_app_MVP/login");
+          navigate("/Trends_app_MVP/feed");
         } catch (error) {
           console.log(error.response.data.error);
         }
@@ -115,20 +124,26 @@ const handleInterestsChange = (event) => {
       <div className={style.Card}>
         <div className={style.RightContainer}>
           <form onSubmit={handleSubmit}>
-            <h2>Sign Up {capitalize(type)}</h2>
+            <h2>Crear Cuenta {traducirTipoPerfil(type)}</h2>
             <div className={style.Input}>
-              <input name="name" onChange={handleInputs} type="text" placeholder="Name" />
+              <input name="name" onChange={handleInputs} type="text" placeholder="Nombre" />
             </div>
             <div className={style.Input}>
-              <input name="username" onChange={handleInputs} type="text" placeholder="Username" />
+              <input name="username" onChange={handleInputs} type="text" placeholder="Nombre de usuario" />
             </div>
             <div className={style.Input}>
               <input name="email" onChange={handleInputs} type="text" placeholder="Email" />
-              <p className={validateLogin === false ? `${style.Error}` : style.NoError}>you must enter a validate email</p>
+              <p className={validateLogin === false ? `${style.Error}` : style.NoError}>Debes ingresar un correo valido</p>
             </div>
             <div className={style.Input}>
-              <input name="password" onChange={handleInputs} type="password" placeholder="Password" />
+              <input name="password" onChange={handleInputs} type="password" placeholder="Contraseña" />
             </div>
+            
+            
+
+            <div className="create_input_group">
+            <label className={style.Input_label}>Intereses:
+            <hr></hr>
             <div className={style.Input}>
                 <select multiple value={inputs.info_interests} onChange={handleInterestsChange}>
                     {interests.map((categoria, index) => (
@@ -138,18 +153,21 @@ const handleInterestsChange = (event) => {
                     ))}
                 </select>
             </div>
+            </label>
+
+            </div>
+
             <div className={style.Options}>
               <div>
                 <input id="remember" type="checkbox" checked={inputs.support} onChange={handleIsCheck}/>
-                <label htmlFor="remember">  Support?</label>
+                <label htmlFor="remember"> Te gustaria recibir ayuda de profesionales? </label>
               </div>
             </div>
-            <button disabled={!(inputs.email && inputs.password && inputs.name && inputs.username)} type="submit">Register</button>
-            <hr />
+            <button disabled={!(inputs.email && inputs.password && inputs.name && inputs.username)} type="submit">Crear tu cuenta</button>
             <div className={style.Account}>
-              <span>Already have an account?</span>
+              <span>¿Ya tienes una cuenta?</span>
               <Link to={"/Trends_app_MVP/login"}>
-                <span className={style.Bold}>Log in</span>
+                <span className={style.Bold}>iniciar sesión</span>
               </Link>
             </div>
           </form>

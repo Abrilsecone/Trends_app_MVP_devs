@@ -64,7 +64,7 @@ export default function profileCompany() {
       };
 
     const fetchCompany = async () =>{
-        const URL = `${VITE_URL}/api/v1/user/profile`;
+        const URL = `${VITE_URL}/user/profile`;
         //const ID = userLogin.id;
 
         try{
@@ -82,9 +82,9 @@ export default function profileCompany() {
 
     //?AL PRESIONAR GUARDAR ENVIO DATOS A BACK PARA ACTUALIZAR
     const handleSaveButton = async(buttonName) =>{
-        //const URL = `${VITE_URL}/api/v1/search/user`;
+        //const URL = `${VITE_URL}/search/user`;
         const ID = companyData.id;
-        const URL = `${VITE_URL}/api/v1/user/${ID}`;
+        const URL = `${VITE_URL}/user/${ID}`;
         //formateo los datos a enviar
         const data = formatData();
         //envio datos
@@ -181,7 +181,7 @@ export default function profileCompany() {
     const postImage = async ()=>{
         const f = new FormData();
         f.append("image",image);
-        const URL = `${VITE_URL}/api/v1/images/upload`
+        const URL = `${VITE_URL}/images/upload`
 
         console.log("que tiene f: ", f)
 
@@ -204,7 +204,7 @@ export default function profileCompany() {
             <div className={style.profilePictureBasicInfoContainer}>
                 {/* ENCABEZADO */}
                 <div className={style.header}>
-                    <h1>Company</h1>
+                    <h1>Compañía</h1>
                 </div>
                 {/* IMAGEN */}
                 {/* {
@@ -320,7 +320,7 @@ export default function profileCompany() {
                         <div className={style.infoContainer}>
                             <h1>{companyData.name}</h1>
                             <h3>{companyData.city}, {companyData.country}</h3>
-                            <h3>website: {companyData.website}</h3>
+                            <h3>Sitio web: {companyData.website}</h3>
                             <h3>cuit: {companyData.cuit}</h3>
                             <h3>email : {companyData.email}</h3>
                             <hr></hr>
